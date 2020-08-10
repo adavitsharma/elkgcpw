@@ -19,6 +19,7 @@ cluster.name: hcl
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
+<<<<<<< HEAD
 #
 #node.name: "master.us-central1-a.c.steel-shine-285406.internal"
 node.name: ${HOSTNAME}
@@ -27,6 +28,14 @@ node.data: false
 #cluster.initial_master_nodes: "master.us-central1-a.c.steel-shine-285406.internal"
 #network.publish_host: "master.us-central1-a.c.steel-shine-285406.internal"
 #network.host: _gce_
+=======
+#node.name: coordinator
+node.name: ${HOSTNAME}
+node.data: false
+node.master: false
+node.ingest: false
+#cluster.initial_master_nodes: master
+>>>>>>> 907417b965649a545f37906c67a49aae3e48496b
 #
 # Add custom attributes to the node:
 #
@@ -58,19 +67,32 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
+<<<<<<< HEAD
 #network.host: 10.128.0.6
 
 network.host: _gce:hostname_
 #
+=======
+#network.host: 10.128.0.9
+network.host: _gce:hostname_
+#
+# Specific GCE discovery plugin settings
+cloud.gce.project_id: steel-shine-285406
+cloud.gce.zone: us-central1-a
+discovery.zen.hosts_provider: gce
+>>>>>>> 907417b965649a545f37906c67a49aae3e48496b
 # Set a custom port for HTTP:
 #
 http.port: 9200
 #
+<<<<<<< HEAD
 # Specific GCE discovery plugin settings
 cloud.gce.project_id: steel-shine-285406
 cloud.gce.zone: us-central1-a	
 discovery.zen.hosts_provider: gce
 
+=======
+>>>>>>> 907417b965649a545f37906c67a49aae3e48496b
 # For more information, consult the network module documentation.
 #
 # --------------------------------- Discovery ----------------------------------
@@ -78,8 +100,16 @@ discovery.zen.hosts_provider: gce
 # Pass an initial list of hosts to perform discovery when this node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
+<<<<<<< HEAD
 discovery.seed_hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
 #discovery.zen.ping.unicast.hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
+=======
+#discovery.seed_hosts: ["host1", "host2"]
+#discovery.zen.ping.unicast.hosts: ["35.225.109.216","34.67.144.127","146.148.58.91","34.72.138.239"]
+#discovery.zen.ping.unicast.hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
+discovery.seed_hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
+#
+>>>>>>> 907417b965649a545f37906c67a49aae3e48496b
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
 #cluster.initial_master_nodes: ["node-1", "node-2"]
@@ -99,6 +129,7 @@ discovery.seed_hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+<<<<<<< HEAD
 #xpack.security.enabled: true
 #######
 #xpack.security.transport.ssl.enabled: true
@@ -108,3 +139,5 @@ discovery.seed_hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10
 #xpack.security.http.ssl.enabled: true
 #xpack.security.http.ssl.keystore.path: "/etc/elasticsearch/http.p12"
 
+=======
+>>>>>>> 907417b965649a545f37906c67a49aae3e48496b

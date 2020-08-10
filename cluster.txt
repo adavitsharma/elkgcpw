@@ -1,0 +1,80 @@
+    1  apt-get upgrade -y
+    2  apt update
+    3  apt install openjdk-8-jdk -y
+    4  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-amd64.de
+    5  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-amd64.deb
+    6  dpkg -i elasticsearch-7.8.1-amd64.deb 
+    7  wget https://artifacts.elastic.co/downloads/kibana/kibana-7.8.1-amd64.deb
+    8  vi /etc/elasticsearch/elasticsearch.yml 
+    9  systemctl enable elasticsearch.service
+   10  systemctl start elasticsearch.service
+   11  vi /etc/elasticsearch/elasticsearch.yml 
+   12  systemctl start elasticsearch.service
+   13  dpkg -i kibana-7.8.1-amd64.deb 
+   14  vi /etc/kibana/kibana.yml 
+   15  sudo sysctl -w vm.max_map_count=262144
+   16  sudo systemctl enable kibana.service
+   17  sudo systemctl start kibana.service
+   18  ps -ef |grep kibana
+   19  sudo systemctl restart kibana.service
+   20  vi /etc/kibana/kibana.yml 
+   21  ps -ef |grep elastic
+   22  vi /etc/elasticsearch/elasticsearch.yml 
+   23  sudo systemctl restart kibana.service
+   24  systemctl restart elasticsearch.service
+   25  ifconfig
+   26  curl -XGET 'http://10.128.0.9:9200/_cluster/state?pretty'
+   27  sudo systemctl restart kibana.service
+   28  vi /etc/elasticsearch/elasticsearch.yml 
+   29  systemctl restart elasticsearch.service
+   30  curl -XGET 'http://10.128.0.9:9200/_cluster/state?pretty'
+   31  vi /etc/elasticsearch/elasticsearch.yml 
+   32  systemctl restart elasticsearch.service
+   33  curl -XGET 'http://10.128.0.9:9200/_cluster/state?pretty'
+   34  vi /etc/kibana/kibana.yml 
+   35  sudo systemctl restart kibana.service
+   36  vi /etc/elasticsearch/elasticsearch.yml 
+   37  systemctl restart elasticsearch.service
+   38  curl -XGET 'http://10.128.0.9:9200/_cluster/health?pretty'
+   39  vi /etc/elasticsearch/elasticsearch.yml 
+   40  grep -v "^#" /etc/elasticsearch/elasticsearch.yml | grep -v "^$" | less
+   41  !
+   42  cd /usr/share/elasticsearch/
+   43  ./bin/elasticsearch-plugin install discovery-gce
+   44  vi /etc/elasticsearch/elasticsearch.yml 
+   45  systemctl restart elasticsearch.service
+   46  curl -XGET 'http://10.128.0.9:9200/_cluster/health?pretty'
+   47  telnet master:9200
+   48  vi /etc/elasticsearch/elasticsearch.yml 
+   49  systemctl restart elasticsearch.service
+   50  curl -XGET 'http://10.128.0.9:9200/_cluster/health?pretty'
+   51  cd /etc/elasticsearch/
+   52  git init
+   53  git add elasticsearch.yml 
+   54  git commit -m "coordinator"
+   55  git config --local user.name abhishek
+   56  git config --local user.email ab@cd
+   57  git commit -m "coordinator"
+   58  git remote add origin https://github.com/adavitsharma/elkgcpw.git
+   59  git push 
+   60  git push -u origin master
+   61  cd /etc/kibana/
+   62  git init
+   63  git add kibana.yml 
+   64  git commit -m "kibanaLB"
+   65  git push -u origin master
+   66  git remote add origin https://github.com/adavitsharma/elkgcpw.git
+   67  git push -u origin master
+   68  git add kibana.yml
+   69  git commit -m "kibanaLB"
+   70  git push -u origin master
+   71  git pull .
+   72  git push .
+   73  git push
+   74  git push -u origin master
+   75  cp kibana.yml /etc/elasticsearch/
+   76  cd /etc/elasticsearch/
+   77  git add kibana.yml 
+   78  git commit -m "KibanaLB"
+   79  git push -u origin master
+   80  history>>cluster.txt
