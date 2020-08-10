@@ -1,143 +1,23 @@
-# ======================== Elasticsearch Configuration =========================
-#
-# NOTE: Elasticsearch comes with reasonable defaults for most settings.
-#       Before you set out to tweak and tune the configuration, make sure you
-#       understand what are you trying to accomplish and the consequences.
-#
-# The primary way of configuring a node is via this file. This template lists
-# the most important settings you may want to configure for a production cluster.
-#
-# Please consult the documentation for further information on configuration options:
-# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
-#
-# ---------------------------------- Cluster -----------------------------------
-#
-# Use a descriptive name for your cluster:
-#
+
 cluster.name: hcl
-#
-# ------------------------------------ Node ------------------------------------
-#
-# Use a descriptive name for the node:
-<<<<<<< HEAD
-#
-#node.name: "master.us-central1-a.c.steel-shine-285406.internal"
 node.name: ${HOSTNAME}
 node.master: true
 node.data: false
-#cluster.initial_master_nodes: "master.us-central1-a.c.steel-shine-285406.internal"
-#network.publish_host: "master.us-central1-a.c.steel-shine-285406.internal"
-#network.host: _gce_
-=======
-#node.name: coordinator
-node.name: ${HOSTNAME}
-node.data: false
-node.master: false
-node.ingest: false
-#cluster.initial_master_nodes: master
->>>>>>> 907417b965649a545f37906c67a49aae3e48496b
-#
-# Add custom attributes to the node:
-#
-#node.attr.rack: r1
-#
-# ----------------------------------- Paths ------------------------------------
-#
-# Path to directory where to store the data (separate multiple locations by comma):
-#
 path.data: /var/lib/elasticsearch
-#
-# Path to log files:
-#
 path.logs: /var/log/elasticsearch
-#
-# ----------------------------------- Memory -----------------------------------
-#
-# Lock the memory on startup:
-#
-#bootstrap.memory_lock: true
-#
-# Make sure that the heap size is set to about half the memory available
-# on the system and that the owner of the process is allowed to use this
-# limit.
-#
-# Elasticsearch performs poorly when the system is swapping the memory.
-#
-# ---------------------------------- Network -----------------------------------
-#
-# Set the bind address to a specific IP (IPv4 or IPv6):
-#
-<<<<<<< HEAD
-#network.host: 10.128.0.6
-
 network.host: _gce:hostname_
-#
-=======
-#network.host: 10.128.0.9
-network.host: _gce:hostname_
-#
-# Specific GCE discovery plugin settings
 cloud.gce.project_id: steel-shine-285406
 cloud.gce.zone: us-central1-a
 discovery.zen.hosts_provider: gce
->>>>>>> 907417b965649a545f37906c67a49aae3e48496b
-# Set a custom port for HTTP:
-#
 http.port: 9200
-#
-<<<<<<< HEAD
-# Specific GCE discovery plugin settings
-cloud.gce.project_id: steel-shine-285406
-cloud.gce.zone: us-central1-a	
-discovery.zen.hosts_provider: gce
-
-=======
->>>>>>> 907417b965649a545f37906c67a49aae3e48496b
-# For more information, consult the network module documentation.
-#
-# --------------------------------- Discovery ----------------------------------
-#
-# Pass an initial list of hosts to perform discovery when this node is started:
-# The default list of hosts is ["127.0.0.1", "[::1]"]
-#
-<<<<<<< HEAD
 discovery.seed_hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
-#discovery.zen.ping.unicast.hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
-=======
-#discovery.seed_hosts: ["host1", "host2"]
-#discovery.zen.ping.unicast.hosts: ["35.225.109.216","34.67.144.127","146.148.58.91","34.72.138.239"]
-#discovery.zen.ping.unicast.hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
-discovery.seed_hosts: ["10.128.0.6:9200","10.128.0.9:9200","10.128.0.8:9200","10.128.0.7:9200"]
-#
->>>>>>> 907417b965649a545f37906c67a49aae3e48496b
-# Bootstrap the cluster using an initial set of master-eligible nodes:
-#
-#cluster.initial_master_nodes: ["node-1", "node-2"]
-#
-# For more information, consult the discovery and cluster formation module documentation.
-#
-# ---------------------------------- Gateway -----------------------------------
-#
-# Block initial recovery after a full cluster restart until N nodes are started:
-#
-#gateway.recover_after_nodes: 3
-#
-# For more information, consult the gateway module documentation.
-#
-# ---------------------------------- Various -----------------------------------
-#
-# Require explicit names when deleting indices:
-#
-#action.destructive_requires_name: true
-<<<<<<< HEAD
-#xpack.security.enabled: true
-#######
-#xpack.security.transport.ssl.enabled: true
-#xpack.security.transport.ssl.verification_mode: certificate
-#xpack.security.transport.ssl.keystore.path: /usr/share/elasticsearch/config/elastic-certificates.p12
-#xpack.security.transport.ssl.truststore.path: /usr/share/elasticsearch/config/elastic-certificates.p12
+xpack.security.enabled: true
 #xpack.security.http.ssl.enabled: true
-#xpack.security.http.ssl.keystore.path: "/etc/elasticsearch/http.p12"
-
-=======
->>>>>>> 907417b965649a545f37906c67a49aae3e48496b
+#xpack.security.http.ssl.keystore.path: /etc/elasticsearch/elastic-certificates.p12
+#xpack.security.http.ssl.truststore.path: /etc/elasticsearch/elastic-certificates.p12
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.keystore.path: /etc/elasticsearch/elastic-certificates.p12
+xpack.security.transport.ssl.truststore.path: /etc/elasticsearch/elastic-certificates.p12
+xpack.security.transport.ssl.keystore.password: changeme
+xpack.security.transport.ssl.truststore.password: changeme
